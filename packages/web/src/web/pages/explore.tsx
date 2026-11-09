@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Link, useParams } from "wouter";
 import {
   ArrowUpRight,
@@ -10,6 +10,7 @@ import {
   Phone,
   Mail,
   Clock3,
+  MessageCircle,
 } from "lucide-react";
 import { destinations, services, business } from "../lib/travel";
 import { ClosingCTA, SectionHeading, WhatsApp } from "../components/layout";
@@ -330,7 +331,7 @@ export function About() {
 export function Contact() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
 
-  function submitContactForm(event: React.FormEvent<HTMLFormElement>) {
+  function submitContactForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const message = [
       "Hello Krishna Travels Freetown, I have a general enquiry.",

@@ -1,19 +1,51 @@
-# App template
+# Krishna Travels — Freetown
 
-Runable copies this Bun and Turborepo project into each new sandbox.
+A responsive travel agency website concept for Krishna Travels in Freetown, Sierra Leone.
 
-The root package commands are the external contract:
+**Live website:** https://krishna-travel-agency-9939.vercel.app/
 
-- `bun run dev` starts the web app.
-- `bun run dev:desktop` and `bun run dev:mobile` start platform clients.
-- `bun run build` builds every package.
-- `bun run start` starts or restarts the production server.
-- `bun run stop` stops the production server.
-- `bun run lint` and `bun run typecheck` validate the project.
-- The `db:generate`, `db:migrate`, and `db:push` commands manage the database.
+## Project
 
-Deployment tools depend on these command names. Their implementations may change, but the names must remain stable.
+The site presents travel services, destination inspiration, agency contact details, a trip enquiry flow, and a Freetown office map.
 
-The web package owns the API, database, and shared web interface. The mobile package is an Expo client. The desktop package is an Electron shell around the web app. Services use the fixed ports defined in `__ports.cjs`, and the web health endpoint is `/api/health`.
+## Tech stack
 
-Secrets belong in the root `.env` file. Browser values must use the `VITE_` prefix. Commands prefixed with `internal:` are for template maintenance.
+- React and TypeScript
+- Vite
+- Bun workspaces and Turborepo
+- Hono API
+- Drizzle ORM and LibSQL
+- Wouter routing
+
+## Development
+
+Install dependencies from the repository root:
+
+```bash
+bun install
+bun run dev
+```
+
+Build the web app:
+
+```bash
+bun run build:web
+```
+
+Run the full workspace build:
+
+```bash
+bun run build
+```
+
+## Deployment
+
+The production website is hosted on Vercel and connected to this GitHub repository. Push changes to the `main` branch to trigger a deployment when the Vercel Git integration is enabled.
+
+## Contact form behavior
+
+The contact page prepares a message and opens WhatsApp for the visitor to review and send. It does not claim to deliver messages to an agency inbox automatically.
+
+## Important
+
+This is an independent website concept. Travel availability, prices, office hours and booking arrangements must be confirmed directly with Krishna Travels.

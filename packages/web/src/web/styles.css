@@ -3407,3 +3407,42 @@ button:disabled {
     transition: none !important;
   }
 }
+
+
+@media (max-width: 900px) {
+  .contact-form-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .contact-map-card {
+    padding: 18px;
+  }
+  .contact-map-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .contact-map-heading h2 {
+    font-size: 23px;
+  }
+  .contact-map-frame {
+    height: 300px;
+  }
+  .contact-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 16px;
+  }
+  .contact-form .field.full,
+  .contact-form > .button {
+    grid-column: 1;
+  }
+  .contact-form > .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .contact-form-intro h2 {
+    font-size: 29px;
+  }
+}

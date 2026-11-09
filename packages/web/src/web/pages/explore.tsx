@@ -328,12 +328,30 @@ export function About() {
   );
 }
 export function Contact() {
+  const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  function submitContactForm(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const message = [
+      "Hello Krishna Travels Freetown, I have a general enquiry.",
+      "",
+      `Name: ${contactForm.name}`,
+      `Email: ${contactForm.email}`,
+      `Phone: ${contactForm.phone || "Not provided"}`,
+      "",
+      `Message: ${contactForm.message}`,
+      "",
+      "Sent from the Krishna Travels website contact form.",
+    ].join("\\n");
+    window.open(whatsapp(message), "_blank", "noopener,noreferrer");
+  }
+
   return (
     <>
       <PageIntro
         eyebrow="GOOD JOURNEYS START WITH A HELLO"
         title="Let’s talk about your next trip."
-        text="Call, message or visit the Freetown team. For a travel quote, use the trip planner to put your ideas in one place."
+        text="Call, message or visit the Freetown team. Send a quick enquiry or use the trip planner for a detailed travel quote."
       />
       <section className="container contact-grid listing-section">
         <div className="contact-info">
@@ -377,30 +395,98 @@ export function Contact() {
           </div>
           <WhatsApp />
           <p className="subtle-note">
-            Contacts sourced from the official branch page and company brochure. This is an
-            independent website concept awaiting owner approval.
+            This is an independent website concept. Please confirm the office location and contact
+            details with the agency before visiting.
           </p>
         </div>
-        <div className="contact-panel">
-          <span className="contact-map-icon">
-            <MapPin size={44} />
-          </span>
-          <span className="map-label">FREETOWN, SIERRA LEONE</span>
-          <h3>
-            Local support.
-            <br />A world of possibility.
-          </h3>
-          <p>Find Krishna Travels on Lightfoot Boston Street, in central Freetown.</p>
-          <a href={business.map} target="_blank" rel="noopener noreferrer" className="button">
-            Open in Google Maps <ArrowUpRight size={18} />
-          </a>
-          <small>
-            Opens an address-based map search.
-            <br />
-            Confirm the office location before travelling.
-          </small>
+        <div className="contact-map-card">
+          <div className="contact-map-heading">
+            <div>
+              <p className="eyebrow"><span /> FIND US IN FREETOWN</p>
+              <h2>Come and say hello.</h2>
+              <p>Shop No. 11, Lightfoot Boston Street, opposite Standard Chartered Bank.</p>
+            </div>
+            <a href={business.map} target="_blank" rel="noopener noreferrer" className="text-link">
+              Open directions <ArrowUpRight size={17} />
+            </a>
+          </div>
+          <div className="contact-map-frame">
+            <iframe
+              title="Map showing Krishna Travels near Lightfoot Boston Street, Freetown"
+              src="https://www.google.com/maps?q=Shop%20No.%2011%2C%20Lightfoot%20Boston%20Street%2C%20opposite%20Standard%20Chartered%20Bank%2C%20Freetown%2C%20Sierra%20Leone&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <p className="map-disclaimer">Map pin is based on the published street address. Confirm the exact office location before travelling.</p>
         </div>
       </section>
+
+      <section className="container contact-form-section section">
+        <div className="contact-form-intro">
+          <p className="eyebrow"><span /> SEND US A MESSAGE</p>
+          <h2>How can we help?</h2>
+          <p>Leave a few details and we’ll prepare a message for the Freetown team on WhatsApp. You’ll review and send it from WhatsApp.</p>
+          <div className="contact-form-prompt">
+            <MessageCircle size={20} />
+            <span>Nothing is sent automatically. Your WhatsApp app opens with your message ready to review.</span>
+          </div>
+        </div>
+        <form className="contact-form" onSubmit={submitContactForm}>
+          <label className="field">
+            Full name
+            <input
+              required
+              minLength={2}
+              maxLength={100}
+              autoComplete="name"
+              value={contactForm.name}
+              onChange={(event) => setContactForm((current) => ({ ...current, name: event.target.value }))}
+              placeholder="Your name"
+            />
+          </label>
+          <label className="field">
+            Email address
+            <input
+              required
+              type="email"
+              maxLength={254}
+              autoComplete="email"
+              value={contactForm.email}
+              onChange={(event) => setContactForm((current) => ({ ...current, email: event.target.value }))}
+              placeholder="you@example.com"
+            />
+          </label>
+          <label className="field">
+            Phone number <small>(optional)</small>
+            <input
+              type="tel"
+              maxLength={25}
+              autoComplete="tel"
+              value={contactForm.phone}
+              onChange={(event) => setContactForm((current) => ({ ...current, phone: event.target.value }))}
+              placeholder="+232 ..."
+            />
+          </label>
+          <label className="field full">
+            Your message
+            <textarea
+              required
+              minLength={5}
+              maxLength={1500}
+              rows={5}
+              value={contactForm.message}
+              onChange={(event) => setContactForm((current) => ({ ...current, message: event.target.value }))}
+              placeholder="Tell us what you need help with..."
+            />
+          </label>
+          <button className="button" type="submit">
+            Prepare WhatsApp message <MessageCircle size={18} />
+          </button>
+        </form>
+      </section>
+
       <section className="container section faq-section">
         <div>
           <p className="eyebrow">

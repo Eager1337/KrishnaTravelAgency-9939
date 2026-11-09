@@ -1,0 +1,11 @@
+{
+  "desktop": "passed",
+  "mobile": "passed",
+  "quote_persistence": "passed",
+  "email_reference_lookup": "passed",
+  "wrong_email_blocked": "passed",
+  "download": "passed",
+  "routes_checked": 17,
+  "console_errors": [],
+  "test_reference": "KT-61417BF2C99A47C388D2"
+}

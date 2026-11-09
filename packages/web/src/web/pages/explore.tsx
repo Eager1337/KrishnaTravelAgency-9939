@@ -12,7 +12,7 @@ import {
   Clock3,
   MessageCircle,
 } from "lucide-react";
-import { destinations, services, business } from "../lib/travel";
+import { destinations, services, business, whatsapp } from "../lib/travel";
 import { ClosingCTA, SectionHeading, WhatsApp } from "../components/layout";
 import { DestinationCard, ServiceGrid, ServiceIcon, FAQ } from "../components/travel-ui";
 
